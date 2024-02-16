@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Google Test" thread-count="4" verbose="4">
+	
+	
+	<test name="Google Test">
+		<classes>
+			<class name="Feb2024.SeleniumGrid_Practice2024.SeleniumGridPractice">
+			</class>
+		</classes>
+	</test>
+	
+</suite>
