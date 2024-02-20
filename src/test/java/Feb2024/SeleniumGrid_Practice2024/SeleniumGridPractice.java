@@ -40,6 +40,7 @@ public class SeleniumGridPractice {
 	public void titleTest()
 	{
 		String actual = driver.getTitle();
+		System.out.println("Actual Title= "+actual);
 		Assert.assertEquals(actual, "Google");
 		
 	}
@@ -48,6 +49,7 @@ public class SeleniumGridPractice {
 	public void urlTest()
 	{
 		String actual = driver.getCurrentUrl();
+		System.out.println("Actual URL= "+actual);
 		Assert.assertEquals(actual, "https://www.google.com/");
 	}
 	
