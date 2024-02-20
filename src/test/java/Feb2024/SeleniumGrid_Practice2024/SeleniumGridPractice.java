@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -56,7 +57,7 @@ public class SeleniumGridPractice {
 	
 	
 	
-	@AfterMethod
+	@AfterTest
 	public void tearDown()
 	{
 		driver.close();
