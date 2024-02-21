@@ -45,7 +45,6 @@ pipeline
                 echo("Perform Sanity Testcases")
                 }
             }
-        }
         
         stage("Deploy to Prod"){
             steps{
