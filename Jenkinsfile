@@ -1,64 +1,58 @@
-pipeline{
-    
-    
+pipeline 
+{
     agent any
     
-    stages{
-        
-        stage("build"){
+    tools{
+    	maven 'maven'
+        }
+
+    stages 
+    {
+        stage('Build') 
+        {
             steps{
-                echo("build project")
+                echo("BUILD the project")
             }
         }
+                   
         
-        stage("deploy to dev"){
-            steps{
-                echo("deploy to dev")
-            }
-        }
-        
-        stage("RUN UTs"){
-            steps{
-                echo("run unit tests")
-            }
-        }
-        
-        
-         stage("deploy to QA"){
+        stage("Deploy to QA"){
             steps{
                 echo("deploy to QA")
             }
         }
+                
+        stage('Regression Automation Test') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/badwenikita/SeleniumGrid_Practice2024.git'
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml"
+                    
+                }
+            }
+        }
+                
         
-        stage("RUN Automation tests"){
+        
+        stage("Deploy to Stage"){
             steps{
-                echo("run automation tests")
+                echo("deploy to Stage")
             }
         }
         
-        
-         stage("deploy to STAGE"){
-            steps{
-                echo("deploy to stage")
+        stage('Sanity Automation Test') {
+            steps {
+                echo("Perform Sanity Testcases")
+                }
             }
         }
         
-        stage("RUN Sanity tests"){
+        stage("Deploy to Prod"){
             steps{
-                echo("run automation tests")
-            }
-        }
-        
-        stage("deploy to PROD"){
-            steps{
-                echo("deploy to prod")
+                echo("deploy to Prod")
             }
         }
         
         
     }
-    
-    
-    
-    
 }
